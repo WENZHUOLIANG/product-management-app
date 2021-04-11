@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="project_product_tree_view">
+        <field name="name">Product</field>
+        <field name="model">project.product</field>
+        <field name="arch" type="xml">
+            <tree string="Product">
+                <field name="product_id"/>
+                <field name="product_description"/>
+                <field name="start_date" />
+                <field name="inactive_date" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="project_product_form_view">
+        <field name="name">Product</field>
+        <field name="model">project.product</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="create_workarea" string="Create Workarea" type="object"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="product_id"/>
+                        <field name="product_description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_product_act_window" model="ir.actions.act_window">
+        <field name="name">Product</field>
+        <field name="res_model">project.product</field>
+        <field name="view_mode">tree,form,pivot</field>
+    </record>
+
+    <menuitem name="Product Management" id="project_product_menu_root" groups="base.group_user" sequence="10"></menuitem>
+
+    <menuitem name="Product" id="sec_project_product_menu" parent="project_product_menu_root" action="project_product_act_window" sequence="10"></menuitem>
+</odoo>
