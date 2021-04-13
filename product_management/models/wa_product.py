@@ -2,6 +2,7 @@ from odoo import api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools.translate import _
 import logging
+from datetime import datetime
 
 _logger = logging.getLogger(__name__)
 
@@ -40,8 +41,14 @@ class Product(models.Model):
         self.change_state('submitted')
 
     def make_approved(self):
+        # sync the workarea item into final table and deactivate the existing record from final table
         self.change_state('approved')
-        # todo - sync the workarea item into final table and deactivate the existing record from final table
+        self.env['project.product'].search([('product_id', '=', self.product_id),
+                                            ('inactive_date', '=', None)]).inactive_date = datetime.now()
+        self.env['project.product'].create({'product_id': self.product_id,
+                                            'product_description': self.product_description,
+                                            'start_date': datetime.now(),
+                                            })
 
     def make_rejected(self):
         self.change_state('draft')

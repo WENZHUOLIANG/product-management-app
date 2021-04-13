@@ -13,7 +13,7 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="project_product_form_view">
+    <record model="ir.ui.view" id="project_wa_product_form_view">
         <field name="name">Product</field>
         <field name="model">project.wa.product</field>
         <field name="arch" type="xml">

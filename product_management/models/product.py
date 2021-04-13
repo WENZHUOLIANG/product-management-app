@@ -1,4 +1,5 @@
 from odoo import api, fields, models
+from datetime import datetime
 
 class Product(models.Model):
     _name = "project.product"
@@ -17,5 +18,9 @@ class Product(models.Model):
         return result
 
     def create_workarea(self):
-        # todo - implement the logic of copying final table data into the workarea table
-        return
+        # implement the logic of copying final table data into the workarea table
+        self.env['project.wa.product'].create({'product_id': self.product_id,
+                                               'product_description': self.product_description,
+                                               'start_date': datetime.now(),
+                                               })
+        return True
