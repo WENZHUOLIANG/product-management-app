@@ -1,3 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_project_product_group_user,project.product,model_project_product,base.group_user,1,0,0,0
+access_project_product_group_user,project.product,model_project_product,base.group_user,1,1,1,0
 access_project_wa_product_group_user,project.wa.product,model_project_wa_product,base.group_user,1,1,1,1
